@@ -1,0 +1,85 @@
+package mundo.dto;
+
+
+public class ArtistasDTO implements IDTO
+{
+	
+	private int idArtista;
+	
+	private String nombre;
+	
+	private String nombreReal;
+	
+	public ArtistasDTO()
+	{
+		super();
+	}
+	
+	public ArtistasDTO(int pIdArtista, String pNombre, String pNombreReal)
+	{
+		idArtista = pIdArtista;
+		nombre = pNombre;
+		nombreReal = pNombreReal;
+	}
+	
+	
+
+	public int getIdArtista() {
+		return idArtista;
+	}
+
+	public void setIdArtista(int PIdArtista) {
+		idArtista = PIdArtista;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String pNombre) {
+		nombre = pNombre;
+	}
+
+	public String getNombreReal() {
+		return nombreReal;
+	}
+
+	public void setNombreReal(String pNombreReal) {
+		nombreReal = pNombreReal;
+	}
+
+	@Override
+	public String insertar() {
+		
+		return "INSERT INTO ARTISTAS (ID, NOMBRE, NOMBRE_REAL) VALUES ("+ idArtista + ", '"+ nombre.trim()+"', '"+nombreReal.trim()+"')" ;
+	}
+
+	@Override
+	public String eliminar() {
+		return "delete from ARTISTAS where id = "+idArtista;
+	}
+
+	@Override
+	public String actualizar() {
+		return "UPDATE ARTISTAS SET NOMBRE = '"+nombre.trim()+"' WHERE ID = "+idArtista;
+	}
+
+	@Override
+	public String consultarPorID() {
+		// TODO Auto-generated method stub
+		return "select * from artistas where id = "+idArtista;
+	}
+
+	@Override
+	public String consultarTodos() {
+		// TODO Auto-generated method stub
+		return "select * from artistas";
+	}
+	
+	
+	public String toString() {
+		return "ArtistasDTO [ID=" + idArtista + ", NOMBRE=" + nombre + ", NOMBRE_REAL=" + nombreReal +"]";
+	}
+
+	
+}
