@@ -65,8 +65,8 @@ public class CancionesDAO implements IDAO
 	}
 
 	@Override
-	public Nodo consultar(Conexion con, Mensaje messa) {
-		// TODO Auto-generated method stub
+	public Nodo consultar(Conexion con, Mensaje messa) 
+	{
 		CancionesDTO cancion = new CancionesDTO();
 		cancion.setIdCancion(messa.getIdCancion());
 		
