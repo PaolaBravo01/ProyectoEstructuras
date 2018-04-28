@@ -8,9 +8,15 @@ import mundo.contenedora.Mensaje;
 public class ArtistasDAO implements IDAO{
 
 	@Override
-	public void insertar(Conexion con, Mensaje messa) {
-		// TODO Auto-generated method stub
+	public void insertar(Conexion con, Mensaje messa) 
+	{
+		int idArtista = messa.getIdArtista();
+		String nombreArtista = messa.getNombre();
+		String nomReal = messa.getNombreReal();
 		
+		ArtistasDTO nvo = new ArtistasDTO(idArtista, nombreArtista, nomReal);
+		
+		con.ejecutaActualizacion(nvo.insertar());
 	}
 
 	@Override
@@ -32,7 +38,7 @@ public class ArtistasDAO implements IDAO{
 	}
 
 	@Override
-	public Nodo consultarID(Conexion con, Mensaje messa) {
+	public Nodo consultar(Conexion con, Mensaje messa) {
 		// TODO Auto-generated method stub
 		return null;
 	}

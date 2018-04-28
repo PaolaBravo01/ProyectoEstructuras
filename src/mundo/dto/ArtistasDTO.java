@@ -65,7 +65,7 @@ public class ArtistasDTO implements IDTO
 	}
 
 	@Override
-	public String consultarPorID() {
+	public String consultar() {
 		// TODO Auto-generated method stub
 		return "select * from artistas where id = "+idArtista;
 	}

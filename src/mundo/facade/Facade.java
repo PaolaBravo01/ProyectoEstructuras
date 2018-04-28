@@ -68,15 +68,35 @@ public class Facade implements IFacade
 	@Override
 	public Nodo consultarTodos(Conexion con, Mensaje messa) 
 	{
-		return null;
+		Nodo nvo = new Nodo<>();
+		
+		if(messa.getTabla().equals(Tabla.ARTISTAS))
+		{
+			nvo = artistasDao.consultarTodos(con, messa);
+		}
+		else
+		{
+			nvo = cancionesDao.consultarTodos(con, messa);
+		}
+		return nvo;
 	}
 
 
 
 	@Override
-	public Nodo consultarID(Conexion con, Mensaje messa) 
+	public Nodo consultar(Conexion con, Mensaje messa) 
 	{
-		return null;
+		Nodo nvo = new Nodo<>();
+		
+		if(messa.getTabla().equals(Tabla.ARTISTAS))
+		{
+			nvo = artistasDao.consultar(con, messa);
+		}
+		else
+		{
+			nvo = cancionesDao.consultar(con, messa);
+		}
+		return nvo;
 	}
 
 }

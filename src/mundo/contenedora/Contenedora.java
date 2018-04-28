@@ -24,7 +24,7 @@ public class Contenedora<T>
 		cabeza = null;
 	}
 
-	public T dato(ResultSet rs, String clase)
+	public Nodo dato(ResultSet rs, String clase)
 	{
 		T dato = null;
 		ResultSetMetaData metaDatos;
@@ -80,7 +80,7 @@ public class Contenedora<T>
 		{
 			e.printStackTrace();
 		}
-		return dato;
+		return cabeza;
 		
 		
 	}

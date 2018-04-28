@@ -10,6 +10,6 @@ public interface IDAO
 	public void eliminar(Conexion con, Mensaje messa);
 	public void actualizar(Conexion con, Mensaje messa);
 	public Nodo consultarTodos(Conexion con, Mensaje messa);
-	public Nodo consultarID(Conexion con, Mensaje messa);
+	public Nodo consultar(Conexion con, Mensaje messa);
 
 }

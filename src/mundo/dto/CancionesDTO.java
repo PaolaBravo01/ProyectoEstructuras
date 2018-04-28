@@ -86,7 +86,7 @@ public class CancionesDTO implements IDTO {
 	}
 
 	@Override
-	public String consultarPorID() {
+	public String consultar() {
 		return "select * from canciones where id = "+idCancion;
 	}
 
