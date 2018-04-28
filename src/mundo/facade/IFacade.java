@@ -1,13 +1,17 @@
 package mundo.facade;
 
+import mundo.contenedora.Nodo;
 import mundo.db.Conexion;
 import mundo.dto.ArtistasDTO;
+import mundo.contenedora.Mensaje;
 
 public interface IFacade 
 {
 	
-	public void insertar(Conexion con, ArtistasDTO arti);
-	public void eliminar(Conexion con, ArtistasDTO arti);
-	public void actualizar(Conexion con, ArtistasDTO arti);
+	public void insertar(Conexion con, Mensaje messa);
+	public void eliminar(Conexion con, Mensaje messa);
+	public void actualizar(Conexion con, Mensaje messa);
+	public Nodo consultarTodos(Conexion con, Mensaje messa);
+	public Nodo consultarID(Conexion con, Mensaje messa);
 
 }

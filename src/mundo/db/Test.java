@@ -14,7 +14,6 @@ public class Test {
 		
 		ArtistasDTO nvo = new ArtistasDTO(6, "Greicy", "Greicy Rendon");
 		
-		facade.insertar(serv.getCon(), nvo);
 
 
 	}

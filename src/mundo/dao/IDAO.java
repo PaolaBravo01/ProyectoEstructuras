@@ -1,16 +1,15 @@
 package mundo.dao;
 
 import mundo.db.Conexion;
-import mundo.dto.ArtistasDTO;
+import mundo.contenedora.Mensaje;
+import mundo.contenedora.Nodo;
 
 public interface IDAO 
 {
-	
-	public void insertar(Conexion con, ArtistasDTO artist);
-	public void eliminar(Conexion con, ArtistasDTO artist);
-	public void actualizar(Conexion con, ArtistasDTO artist);
-	
-	
-	
+	public void insertar(Conexion con, Mensaje messa );
+	public void eliminar(Conexion con, Mensaje messa);
+	public void actualizar(Conexion con, Mensaje messa);
+	public Nodo consultarTodos(Conexion con, Mensaje messa);
+	public Nodo consultarID(Conexion con, Mensaje messa);
 
 }
