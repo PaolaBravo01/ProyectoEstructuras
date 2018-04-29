@@ -35,7 +35,6 @@ public class Usuario
 		
 		Nodo nodo = (Nodo) ois.readObject();
 		
-		
 		return nodo;
 		
 	}

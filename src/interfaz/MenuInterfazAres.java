@@ -12,6 +12,7 @@ import javax.swing.KeyStroke;
 import mundo.contenedora.Tabla;
 
 
+
 public class MenuInterfazAres extends JMenuBar implements ActionListener
 {
 	

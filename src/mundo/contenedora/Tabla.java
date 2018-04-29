@@ -2,6 +2,6 @@ package mundo.contenedora;
 
 public enum Tabla 
 {
-	CANCIONES,
-	ARTISTAS
+	ARTISTAS,
+	CANCIONES
 }
