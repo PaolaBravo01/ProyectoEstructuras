@@ -1,8 +1,12 @@
 package interfaz;
 
-public class InterfazAres {
+import javax.swing.JFrame;
 
-	public static void main(String[] args) {
+public class InterfazAres extends JFrame
+{
+
+	public static void main(String[] args)
+	{
 		// TODO Auto-generated method stub
 
 	}
