@@ -9,9 +9,8 @@ public class DialogoArtistas extends JDialog
 
 	private static final long serialVersionUID = 4567890L;
 
-	private InterfazAres principal;
-	
-	private PanelBanner banner;
+
+	private PanelBannerArtista banner;
 	
 	private PanelInformacionArtista panelInfo;
 	
@@ -19,7 +18,7 @@ public class DialogoArtistas extends JDialog
 	{
 		
 		setTitle( "Artistas" );
-        setSize( 800, 600 );
+        setSize( 520, 600 );
         setResizable( false );
         setLocationRelativeTo(null);
         setModal(true);
@@ -27,7 +26,7 @@ public class DialogoArtistas extends JDialog
         // Distribuidor grafico en los bordes
         setLayout( new BorderLayout( ) );        
         
-        banner = new PanelBanner();
+        banner = new PanelBannerArtista();
         add( banner, BorderLayout.NORTH );
         
         panelInfo = new PanelInformacionArtista( this );
