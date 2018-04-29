@@ -16,12 +16,15 @@ public class InterfazAres extends JFrame
 	/** Panel del banner */
 	private PanelBanner panelBanner;
 	
+	private MenuInterfazAres barraMenu;
+	
 	public InterfazAres ( ) 
 	{
 
 		setTitle( "Ares" );
-        setSize( 757, 600 );
+        setSize( 520, 250 );
         setResizable( false );
+
         setDefaultCloseOperation( EXIT_ON_CLOSE );
     
         // Creacion de los paneles
@@ -32,12 +35,22 @@ public class InterfazAres extends JFrame
         
         // Agrega los paneles a la interfaz
         add( panelBanner, BorderLayout.NORTH );
+        
+        
 	}
 	
 	public static void main(String[] args)
 	{
+		// TODO Auto-generated method stub
+        try
+        {
             InterfazAres interfaz = new InterfazAres( );
             interfaz.setVisible( true );
+        }
+        catch( Exception e )
+        {
+            e.getMessage();
+        }
 	}
 
 }
