@@ -5,14 +5,19 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class InterfazAres extends JFrame
 {
 
 =======
+=======
+import mundo.facade.Facade;
+>>>>>>> parent of 262bb15... .
 
 public class InterfazAres extends JFrame
 {
 
+	private Facade interfazAres;
 	
 >>>>>>> 262bb15e40e1ac368e2e121056d6b2d879b9c853
 	//-----------------------------------------------------------
