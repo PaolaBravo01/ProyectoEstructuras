@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class InterfazAres extends JFrame
 {
 
@@ -13,13 +14,14 @@ public class InterfazAres extends JFrame
 =======
 import mundo.facade.Facade;
 >>>>>>> parent of 262bb15... .
+=======
+>>>>>>> 609e31d40185df572336b6134e202a741b972b02
 
 public class InterfazAres extends JFrame
 {
 
 	private Facade interfazAres;
 	
->>>>>>> 262bb15e40e1ac368e2e121056d6b2d879b9c853
 	//-----------------------------------------------------------
 	// Atributos de la interfaz
 	//-----------------------------------------------------------
@@ -27,7 +29,7 @@ public class InterfazAres extends JFrame
 	/** Panel del banner */
 	private PanelBanner panelBanner;
 	
-	public InterfazAres ( ) 
+	public InterfazAres ( ) throws Exception
 	{
 
 		setTitle( "Ares" );
@@ -47,8 +49,16 @@ public class InterfazAres extends JFrame
 	
 	public static void main(String[] args)
 	{
+        try
+        {
             InterfazAres interfaz = new InterfazAres( );
             interfaz.setVisible( true );
+        }
+        catch( Exception e )
+        {
+            e.getMessage();
+        }
+
 	}
 
 }
