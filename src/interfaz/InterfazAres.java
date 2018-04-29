@@ -4,13 +4,9 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
-import mundo.facade.Facade;
-
 public class InterfazAres extends JFrame
 {
 
-	private Facade interfazAres;
-	
 	//-----------------------------------------------------------
 	// Atributos de la interfaz
 	//-----------------------------------------------------------
