@@ -27,6 +27,8 @@ public class DiagoloCancion extends JDialog {
         banner = new PanelBanner();
         add( banner, BorderLayout.NORTH );
         
+        panelInfo = new PanelInformacionCancion( this );
+        add(panelInfo, BorderLayout.CENTER);
 	}
 
 }

@@ -94,7 +94,8 @@ public class MenuInterfazAres extends JMenuBar implements ActionListener
 		}
 		if(CANCION.equals(comando))
 		{
-			tabla = Tabla.CANCIONES;
+			DiagoloCancion cancion = new DiagoloCancion();
+			cancion.setVisible(true);
 		}
 		if(SALIR.equals(comando))
 		{

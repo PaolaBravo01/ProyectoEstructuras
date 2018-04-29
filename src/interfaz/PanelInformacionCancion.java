@@ -35,9 +35,9 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 	
 	private JLabel labNombreArtista;
 	
-	private JLabel genero;
+	private JLabel labGenero;
 	
-	private JLabel duracion;
+	private JLabel labDuracion;
 	
 	private JTextField txtID;
 	
@@ -73,12 +73,14 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 		
 		JPanel panelInfo = new JPanel();
 		
-		panelInfo.setLayout(new GridLayout(1, 3));
-		panelInfo.setPreferredSize( new Dimension( 10,20 ) );
+		panelInfo.setLayout(new GridLayout(3, 4));
+		panelInfo.setPreferredSize( new Dimension( 10, 100 ) );
 		
 		labID = new JLabel(" ID: ");
 		labNombreCancion = new JLabel(" Nombre: ");
 		labNombreArtista = new JLabel(" Nombre real: ");	
+		labGenero = new JLabel(" Genero: ");
+		labDuracion = new JLabel(" Duracion: ");
 		
 		txtID = new JTextField();
 		txtID.setEditable(true);
@@ -89,12 +91,22 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 		txtNombreArtista = new JTextField();
 		txtNombreArtista.setEditable(true);
 		
+		txtGenero = new JTextField();
+		txtGenero.setEditable(true);
+		
+		txtDuracion = new JTextField();
+		txtDuracion.setEditable(true);
+		
 		panelInfo.add(labID);
 		panelInfo.add(txtID);
 		panelInfo.add(labNombreCancion);
 		panelInfo.add(txtNombreCancion);
 		panelInfo.add(labNombreArtista);
 		panelInfo.add(txtNombreArtista);
+		panelInfo.add(labGenero);
+		panelInfo.add(txtGenero);
+		panelInfo.add(labDuracion);
+		panelInfo.add(txtDuracion);
 	
 		add(panelInfo, BorderLayout.NORTH);
 		
