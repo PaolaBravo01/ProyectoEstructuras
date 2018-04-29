@@ -4,17 +4,11 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
-<<<<<<< HEAD
-public class InterfazAres extends JFrame
-{
-
-=======
 
 public class InterfazAres extends JFrame
 {
 
 	
->>>>>>> 262bb15e40e1ac368e2e121056d6b2d879b9c853
 	//-----------------------------------------------------------
 	// Atributos de la interfaz
 	//-----------------------------------------------------------
