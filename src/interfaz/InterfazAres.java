@@ -25,6 +25,7 @@ public class InterfazAres extends JFrame
         setSize( 520, 270 );
         setResizable( false );
 
+        
         setDefaultCloseOperation( EXIT_ON_CLOSE );
     
         // Creacion de los paneles
