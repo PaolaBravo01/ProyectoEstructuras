@@ -86,7 +86,10 @@ public class MenuInterfazAres extends JMenuBar implements ActionListener
 		
 		if(ARTISTA.equals(comando))
 		{
-			tabla = Tabla.ARTISTAS;
+			DialogoArtistas artistas = new DialogoArtistas();
+			artistas.setVisible(true);
+		
+		
 		}
 		if(CANCION.equals(comando))
 		{
