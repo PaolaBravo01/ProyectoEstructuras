@@ -29,7 +29,7 @@ public class InterfazAres extends JFrame
 	/** Panel del banner */
 	private PanelBanner panelBanner;
 	
-	public InterfazAres ( ) throws Exception
+	public InterfazAres ( ) 
 	{
 
 		setTitle( "Ares" );
@@ -49,16 +49,8 @@ public class InterfazAres extends JFrame
 	
 	public static void main(String[] args)
 	{
-        try
-        {
             InterfazAres interfaz = new InterfazAres( );
             interfaz.setVisible( true );
-        }
-        catch( Exception e )
-        {
-            e.getMessage();
-        }
-
 	}
 
 }
