@@ -14,7 +14,6 @@ public class Mensaje implements Serializable
 		UPDATE, 
 		SELECT, 
 		SELECT_ID, 
-		CLOSE
 	}
 	
 	public enum Tabla

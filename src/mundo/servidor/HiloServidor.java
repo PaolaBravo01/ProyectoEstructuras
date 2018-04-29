@@ -76,7 +76,7 @@ public class HiloServidor extends Thread
 				nodo = facade.consultar(con, messa);
 			}
 			
-			
+			oos.writeObject(nodo);
 
 		}
 		
