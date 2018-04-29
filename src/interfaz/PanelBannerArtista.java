@@ -21,7 +21,6 @@ public class PanelBannerArtista extends JPanel
 		
 	public PanelBannerArtista() 
 	{
-		// TODO Auto-generated constructor stub
 		// Se crea el objeto del panel
 		labImagen = new JLabel(new ImageIcon( "./data/artistas.jpg" ) );
 			

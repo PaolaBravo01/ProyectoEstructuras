@@ -49,6 +49,8 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 	
 	private JTextField txtDuracion;
 	
+	private JTextField txtResultados;
+	
 	private JButton butAgregar;
 	
 	private JButton butEliminar;
@@ -74,7 +76,7 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 		JPanel panelInfo = new JPanel();
 		
 		panelInfo.setLayout(new GridLayout(3, 4));
-		panelInfo.setPreferredSize( new Dimension( 10, 100 ) );
+		panelInfo.setPreferredSize( new Dimension( 0, 80 ) );
 		
 		labID = new JLabel(" ID: ");
 		labNombreCancion = new JLabel(" Nombre: ");
@@ -114,7 +116,13 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 		JPanel panelResultados = new JPanel();
 		TitledBorder borde1 = BorderFactory.createTitledBorder("Resultados");
 		borde1.setTitleColor( Color.black );
+		panelResultados.setLayout(new BorderLayout());
 		panelResultados.setBorder( borde1 );
+		
+		txtResultados = new JTextField();
+		txtResultados.setBackground(Color.WHITE);
+		txtResultados.setEditable(false);
+		panelResultados.add(txtResultados,BorderLayout.CENTER);
 		
 		add(panelResultados);
 		

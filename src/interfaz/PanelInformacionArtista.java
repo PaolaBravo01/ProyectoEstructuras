@@ -44,6 +44,8 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 	
 	private JTextField txtNombreReal;
 	
+	private JTextField txtResultado;
+	
 	private JButton butAgregar;
 	
 	private JButton butEliminar;
@@ -96,8 +98,14 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 		//Panel de resultados
 		JPanel panelResultados = new JPanel();
 		TitledBorder borde1 = BorderFactory.createTitledBorder("Resultados");
-		borde1.setTitleColor( Color.black );
+		borde1.setTitleColor( Color.BLACK );
+		panelResultados.setLayout(new BorderLayout());
 		panelResultados.setBorder( borde1 );
+		
+		txtResultado = new JTextField();
+		txtResultado.setBackground(Color.WHITE);
+		txtResultado.setEditable(false);
+		panelResultados.add(txtResultado,BorderLayout.CENTER);
 		
 		add(panelResultados);
 		
@@ -106,7 +114,7 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 				
 		//Adiciona un marco con titulo
 		TitledBorder borde2 = BorderFactory.createTitledBorder("Navegación");
-		borde2.setTitleColor( Color.black );
+		borde2.setTitleColor( Color.BLACK );
 		panelNavegacion.setBorder( borde2 );
 		
 		//Establece las dimensiones del panel

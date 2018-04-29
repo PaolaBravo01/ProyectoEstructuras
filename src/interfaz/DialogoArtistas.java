@@ -18,7 +18,7 @@ public class DialogoArtistas extends JDialog
 	{
 		
 		setTitle( "Artistas" );
-        setSize( 520, 600 );
+        setSize( 500, 600 );
         setResizable( false );
         setLocationRelativeTo(null);
         setModal(true);

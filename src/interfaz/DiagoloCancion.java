@@ -8,7 +8,7 @@ public class DiagoloCancion extends JDialog {
 	
 	private InterfazAres principal;
 	
-	private PanelBanner banner;
+	private PanelBannerCancion banner;
 	
 	private PanelInformacionCancion panelInfo;
 	
@@ -16,7 +16,7 @@ public class DiagoloCancion extends JDialog {
 	{
 		
 		setTitle( "Cancion" );
-        setSize( 800, 600 );
+        setSize( 500, 600 );
         setResizable( false );
         setLocationRelativeTo(null);
         setModal(true);
@@ -24,7 +24,7 @@ public class DiagoloCancion extends JDialog {
         // Distribuidor grafico en los bordes
         setLayout( new BorderLayout( ) );        
         
-        banner = new PanelBanner();
+        banner = new PanelBannerCancion();
         add( banner, BorderLayout.NORTH );
         
         panelInfo = new PanelInformacionCancion( this );
