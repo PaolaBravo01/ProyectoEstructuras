@@ -13,11 +13,13 @@ public class DialogoArtistas extends JDialog
 	
 	private PanelBanner banner;
 	
+	private PanelInformacion panelInfo;
+	
 	public DialogoArtistas()
 	{
 		
 		setTitle( "Artistas" );
-        setSize( 520, 270 );
+        setSize( 800, 600 );
         setResizable( false );
         setLocationRelativeTo(null);
         setModal(true);
@@ -27,6 +29,9 @@ public class DialogoArtistas extends JDialog
         
         banner = new PanelBanner();
         add( banner, BorderLayout.NORTH );
+        
+        panelInfo = new PanelInformacion( this );
+        add(panelInfo, BorderLayout.CENTER);
         
 	}
 	
