@@ -2,6 +2,7 @@ package interfaz;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.TextField;
@@ -68,12 +69,11 @@ public class PanelInformacion extends JPanel implements ActionListener
 		JPanel panelInfo = new JPanel();
 		
 		panelInfo.setLayout(new GridLayout(1, 3));
-		panelInfo.setPreferredSize( new Dimension( 10,50 ) );
+		panelInfo.setPreferredSize( new Dimension( 10,20 ) );
 		
 		labID = new JLabel(" ID: ");
 		labNombre = new JLabel(" Nombre: ");
-		labNombreReal = new JLabel(" Nombre real: ");
-		
+		labNombreReal = new JLabel(" Nombre real: ");	
 		
 		txtID = new JTextField();
 		txtID.setEditable(true);
