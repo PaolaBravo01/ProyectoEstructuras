@@ -26,6 +26,8 @@ public class PanelInformacion extends JPanel implements ActionListener
 	public final static String MODIFICAR = "Modificar";
 	
 	public final static String CONSULTAR = "Consultar";
+	
+	public final static String CONSULTAR_ID = "Consultar por ID";
 		
     private DialogoArtistas principal;
 	
@@ -48,6 +50,8 @@ public class PanelInformacion extends JPanel implements ActionListener
 	private JButton butModificar;
 	
 	private JButton butConsultar;
+	
+	private JButton butConsultarID;
 	
 	
 	public PanelInformacion( DialogoArtistas ia )
@@ -108,7 +112,7 @@ public class PanelInformacion extends JPanel implements ActionListener
 		//Establece las dimensiones del panel
 		panelNavegacion.setPreferredSize( new Dimension( 0,50 ) );
 		
-		butAgregar = new JButton("Agrega");
+		butAgregar = new JButton("Agregar");
 		butAgregar.setActionCommand(AGREGAR);
 		butAgregar.addActionListener(this);
 		
@@ -124,10 +128,16 @@ public class PanelInformacion extends JPanel implements ActionListener
 		butConsultar.setActionCommand(CONSULTAR);
 		butConsultar.addActionListener(this);
 		
+		butConsultarID = new JButton("Consultar por ID");
+		butConsultarID.setActionCommand(CONSULTAR_ID);
+		butConsultarID.addActionListener(this);
+		 
+		
 		panelNavegacion.add(butAgregar);
 		panelNavegacion.add(butEliminar);
 		panelNavegacion.add(butModificar);
 		panelNavegacion.add(butConsultar);
+		panelNavegacion.add(butConsultarID);
 		
 		add(panelNavegacion, BorderLayout.SOUTH);
 	}
