@@ -4,21 +4,18 @@ import java.awt.BorderLayout;
 
 import javax.swing.JDialog;
 
-public class DialogoArtistas extends JDialog
-{
-
-	private static final long serialVersionUID = 4567890L;
-
+public class DiagoloCancion extends JDialog {
+	
 	private InterfazAres principal;
 	
 	private PanelBanner banner;
 	
-	private PanelInformacionArtista panelInfo;
+	private PanelInformacionCancion panelInfo;
 	
-	public DialogoArtistas()
+	public DiagoloCancion()
 	{
 		
-		setTitle( "Artistas" );
+		setTitle( "Cancion" );
         setSize( 800, 600 );
         setResizable( false );
         setLocationRelativeTo(null);
@@ -30,11 +27,6 @@ public class DialogoArtistas extends JDialog
         banner = new PanelBanner();
         add( banner, BorderLayout.NORTH );
         
-        panelInfo = new PanelInformacionArtista( this );
-        add(panelInfo, BorderLayout.CENTER);
-        
 	}
-	
-	
 
 }

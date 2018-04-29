@@ -2,23 +2,20 @@ package interfaz;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-public class PanelInformacion extends JPanel implements ActionListener
-{
+public class PanelInformacionCancion extends JPanel implements ActionListener {
+
 	
 	public final static String AGREGAR = "Agregar";
 	
@@ -30,19 +27,27 @@ public class PanelInformacion extends JPanel implements ActionListener
 	
 	public final static String CONSULTAR_ID = "Consultar por ID";
 		
-    private DialogoArtistas principal;
+    private DiagoloCancion principal;
 	
 	private JLabel labID;
 	
-	private JLabel labNombre;
+	private JLabel labNombreCancion;
 	
-	private JLabel labNombreReal;
+	private JLabel labNombreArtista;
+	
+	private JLabel genero;
+	
+	private JLabel duracion;
 	
 	private JTextField txtID;
 	
-	private JTextField txtNombre;
+	private JTextField txtNombreCancion;
 	
-	private JTextField txtNombreReal;
+	private JTextField txtNombreArtista;
+	
+	private JTextField txtGenero;
+	
+	private JTextField txtDuracion;
 	
 	private JButton butAgregar;
 	
@@ -55,7 +60,7 @@ public class PanelInformacion extends JPanel implements ActionListener
 	private JButton butConsultarID;
 	
 	
-	public PanelInformacion( DialogoArtistas ia )
+	public PanelInformacionCancion( DiagoloCancion ia )
 	{
 		principal = ia;
 		
@@ -72,24 +77,24 @@ public class PanelInformacion extends JPanel implements ActionListener
 		panelInfo.setPreferredSize( new Dimension( 10,20 ) );
 		
 		labID = new JLabel(" ID: ");
-		labNombre = new JLabel(" Nombre: ");
-		labNombreReal = new JLabel(" Nombre real: ");	
+		labNombreCancion = new JLabel(" Nombre: ");
+		labNombreArtista = new JLabel(" Nombre real: ");	
 		
 		txtID = new JTextField();
 		txtID.setEditable(true);
 		
-		txtNombre = new JTextField();
-		txtNombre.setEditable(true);
+		txtNombreCancion = new JTextField();
+		txtNombreCancion.setEditable(true);
 		
-		txtNombreReal = new JTextField();
-		txtNombreReal.setEditable(true);
+		txtNombreArtista = new JTextField();
+		txtNombreArtista.setEditable(true);
 		
 		panelInfo.add(labID);
 		panelInfo.add(txtID);
-		panelInfo.add(labNombre);
-		panelInfo.add(txtNombre);
-		panelInfo.add(labNombreReal);
-		panelInfo.add(txtNombreReal);
+		panelInfo.add(labNombreCancion);
+		panelInfo.add(txtNombreCancion);
+		panelInfo.add(labNombreArtista);
+		panelInfo.add(txtNombreArtista);
 	
 		add(panelInfo, BorderLayout.NORTH);
 		
@@ -148,6 +153,7 @@ public class PanelInformacion extends JPanel implements ActionListener
 		// TODO Auto-generated method stub
 		
 	}
+	
 	
 	
 }
