@@ -1,11 +1,11 @@
 package mundo.facade;
 
 import mundo.contenedora.Nodo;
+import mundo.contenedora.Tabla;
 import mundo.dao.ArtistasDAO;
 import mundo.dao.CancionesDAO;
 import mundo.db.Conexion;
 import mundo.contenedora.Mensaje;
-import mundo.contenedora.Mensaje.Tabla;
 
 public class Facade implements IFacade
 {

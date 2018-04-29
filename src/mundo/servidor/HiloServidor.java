@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import mundo.contenedora.Funcion;
 import mundo.contenedora.Mensaje;
-import mundo.contenedora.Mensaje.Funcion;
 import mundo.contenedora.Nodo;
 import mundo.db.Conexion;
 import mundo.facade.Facade;

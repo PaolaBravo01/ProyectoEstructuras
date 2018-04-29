@@ -9,11 +9,19 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
-public class MenuInterfazAres extends JMenuBar {
+import mundo.contenedora.Tabla;
+
+
+public class MenuInterfazAres extends JMenuBar implements ActionListener
+{
 	
-	private final static String ARTISTA = "Artista";
+	private static final long serialVersionUID = 46378926473L;
+
+	public final static String ARTISTA = "Artista";
 	
-	private final static String CANCION = "Cancion";
+	public final static String CANCION = "Cancion";
+	
+	public final static String SALIR = "Salir"; 
 	
     /**
      * El menú Archivo.
@@ -30,8 +38,17 @@ public class MenuInterfazAres extends JMenuBar {
      */
     private JMenuItem itemCancion;
     
-    public MenuInterfazAres ()
+    private InterfazAres principal;
+    
+    private JMenuItem itemSalir;
+    
+    private Tabla tabla = null;
+    
+    
+    public MenuInterfazAres(InterfazAres ia)
     {
+    	principal = ia;
+    	
     	menuArchivo = new JMenu( "Archivo" );
         menuArchivo.setMnemonic( KeyEvent.VK_A );
         add( menuArchivo );
@@ -43,6 +60,43 @@ public class MenuInterfazAres extends JMenuBar {
         itemArtista.addActionListener( (ActionListener) this );
         menuArchivo.add(itemArtista);
         
+        itemCancion = new JMenuItem("Consultar por canción");
+        itemCancion.setActionCommand(CANCION);
+        itemCancion.setAccelerator( KeyStroke.getKeyStroke( KeyEvent.VK_A, ActionEvent.CTRL_MASK ) );
+        itemCancion.setMnemonic( KeyEvent.VK_A );
+        itemCancion.addActionListener( (ActionListener) this );
+        menuArchivo.add(itemCancion);
+        
+        menuArchivo.addSeparator();
+        
+        itemSalir = new JMenuItem( "Salir" );
+        itemSalir.setActionCommand( SALIR );
+        itemSalir.addActionListener( this );
+        menuArchivo.add( itemSalir );
+        
+        
+        
     }
+
+	@Override
+	public void actionPerformed(ActionEvent e) 
+	{
+	
+		String comando = e.getActionCommand( );
+		
+		if(ARTISTA.equals(comando))
+		{
+			tabla = Tabla.ARTISTAS;
+		}
+		if(CANCION.equals(comando))
+		{
+			tabla = Tabla.CANCIONES;
+		}
+		if(SALIR.equals(comando))
+		{
+			principal.dispose();
+		}
+		
+	}
     
 }

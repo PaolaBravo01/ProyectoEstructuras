@@ -7,21 +7,6 @@ public class Mensaje implements Serializable
 	
 	private static final long serialVersionUID = 1567876524L;
 
-	public enum Funcion
-	{
-		INSERT, 
-		DELETE, 
-		UPDATE, 
-		SELECT, 
-		SELECT_ID, 
-	}
-	
-	public enum Tabla
-	{
-		CANCIONES,
-		ARTISTAS
-	}
-
 	private Funcion funcion;
 	private Tabla tabla;
 	

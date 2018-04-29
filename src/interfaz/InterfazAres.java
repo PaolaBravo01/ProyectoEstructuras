@@ -22,13 +22,17 @@ public class InterfazAres extends JFrame
 	{
 
 		setTitle( "Ares" );
-        setSize( 520, 250 );
+        setSize( 520, 270 );
         setResizable( false );
 
         setDefaultCloseOperation( EXIT_ON_CLOSE );
     
         // Creacion de los paneles
         panelBanner = new PanelBanner( );
+        
+        barraMenu = new MenuInterfazAres(this);
+        setJMenuBar(barraMenu);
+        
         
         // Distribuidor grafico en los bordes
         setLayout( new BorderLayout( ) );
