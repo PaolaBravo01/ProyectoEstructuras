@@ -14,7 +14,8 @@ public class ArtistasDTO implements IDTO, Serializable
 	private String nombreReal;
 	
 	public ArtistasDTO()
-	{
+	{	
+		
 	}
 	
 	public ArtistasDTO(int pIdArtista, String pNombre, String pNombreReal)
