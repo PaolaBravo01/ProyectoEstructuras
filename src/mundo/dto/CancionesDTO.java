@@ -102,6 +102,6 @@ public class CancionesDTO implements IDTO, Serializable {
 
 	public String toString() 
 	{
-		return "ID="+idCancion+"  Nombre="+nombre+"  Nombre Artista="+nomArtista+"  Duracion="+duracion+"  Genero="+ genero ;
+		return "Canciones:" + "\n" + "ID = " + idCancion + "\nNombre = " + nombre +"\nNombre Artista = " + nomArtista + "\nDuracion = " + duracion + "\nGenero = "+genero +"\n " +"/---------------------------------------\\";
 	}
 }

@@ -126,7 +126,7 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 		txtResultado.setEditable(false);
 		scroll = new JScrollPane(txtResultado);
 		
-		panelResultados.add(txtResultado,BorderLayout.CENTER);
+		panelResultados.add(scroll,BorderLayout.CENTER);
 		
 		add(panelResultados);
 		
@@ -161,7 +161,7 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 		butConsultarID.setActionCommand(CONSULTAR_ID);
 		butConsultarID.addActionListener(this);
 		
-		butIniciar = new JButton("Iniciar");
+		butIniciar = new JButton("Ejecutar");
 		butIniciar.setActionCommand(INICIAR);
 		butIniciar.addActionListener(this);
 		
@@ -225,6 +225,22 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 				JOptionPane.showMessageDialog(null, "Por favor ingrese el ID del artista que desea consultar");
 				
 				funcion = Funcion.SELECT_ID;
+			}
+		}
+		if(CONSULTAR_ID.equals(ejecucion))
+		{
+			int mensaje = JOptionPane.showConfirmDialog(null, "¿Desea consultar por su ID a un artista?", "Consultar?",  JOptionPane.YES_NO_OPTION);
+			if(mensaje == JOptionPane.YES_OPTION)
+			{
+				JOptionPane.showMessageDialog(null, "Por favor ingrese el ID del artista que desea consultar");
+
+				funcion = Funcion.SELECT_ID;
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Se consultaran todos los elementos existentes");
+
+				funcion = Funcion.SELECT;
 			}
 		}
 		

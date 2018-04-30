@@ -12,6 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
@@ -58,7 +60,7 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 	
 	private JTextField txtDuracion;
 	
-	private JTextField txtResultados;
+	private JTextArea txtResultados;
 	
 	private JButton butAgregar;
 	
@@ -71,6 +73,8 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 	private JButton butConsultarID;
 
 	private JButton butIniciar;
+	
+	private JScrollPane scroll;
 	
 	private Funcion funcion;
 	private Tabla tabla = Tabla.CANCIONES;
@@ -134,10 +138,12 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 		panelResultados.setLayout(new BorderLayout());
 		panelResultados.setBorder( borde1 );
 		
-		txtResultados = new JTextField();
+		txtResultados = new JTextArea();
 		txtResultados.setBackground(Color.WHITE);
 		txtResultados.setEditable(false);
-		panelResultados.add(txtResultados,BorderLayout.CENTER);
+		scroll = new JScrollPane(txtResultados);
+		
+		panelResultados.add(scroll,BorderLayout.CENTER);
 		
 		add(panelResultados);
 		
@@ -172,7 +178,7 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 		butConsultarID.setActionCommand(CONSULTAR_ID);
 		butConsultarID.addActionListener(this);
 		 
-		butIniciar = new JButton("Iniciar");
+		butIniciar = new JButton("Ejecutar");
 		butIniciar.setActionCommand(INICIAR);
 		butIniciar.addActionListener(this);
 				
@@ -236,6 +242,22 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Por favor ingrese el ID de la canción que desea eliminar");
 
 				funcion = Funcion.SELECT_ID;
+			}
+		}
+		if(CONSULTAR_ID.equals(ejecucion))
+		{
+			int mensaje = JOptionPane.showConfirmDialog(null, "¿Desea consultar por su ID una canción?", "Consultar?",  JOptionPane.YES_NO_OPTION);
+			if(mensaje == JOptionPane.YES_OPTION)
+			{
+				JOptionPane.showMessageDialog(null, "Por favor ingrese el ID de la canción que desea consultar");
+
+				funcion = Funcion.SELECT_ID;
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Se consultaran todos los elementos existentes");
+
+				funcion = Funcion.SELECT;
 			}
 		}
 		

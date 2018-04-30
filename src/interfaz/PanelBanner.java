@@ -22,7 +22,7 @@ public class PanelBanner extends JPanel
 	public PanelBanner ( )
 	{
 		// Se crea el objeto del panel
-		labImagen = new JLabel(new ImageIcon( "./data/bannerAres.jpg" ) );
+		labImagen = new JLabel(new ImageIcon(getClass().getResource("/Imagenes/bannerAres.jpg")  ) );
 			
 		// Agregar el objeto al panel
 		add( labImagen );

@@ -3,6 +3,7 @@ package interfaz;
 import java.awt.BorderLayout;
 
 import javax.swing.JDialog;
+import javax.swing.JPanel;
 
 public class DiagoloCancion extends JDialog {
 	
@@ -16,7 +17,7 @@ public class DiagoloCancion extends JDialog {
 	{
 		
 		setTitle( "Cancion" );
-        setSize( 500, 600 );
+        setSize( 500, 700 );
         setResizable( false );
         setLocationRelativeTo(null);
         setModal(true);
