@@ -120,11 +120,10 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 		borde1.setTitleColor( Color.BLACK );
 		panelResultados.setLayout(new BorderLayout());
 		panelResultados.setBorder( borde1 );
-		
+
 		txtResultado = new JTextArea();
 		txtResultado.setBackground(Color.WHITE);
 		txtResultado.setEditable(false);
-		
 		scroll = new JScrollPane(txtResultado);
 		
 		panelResultados.add(txtResultado,BorderLayout.CENTER);

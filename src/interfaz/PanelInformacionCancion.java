@@ -95,7 +95,7 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 		
 		labID = new JLabel(" ID: ");
 		labNombreCancion = new JLabel(" Nombre: ");
-		labNombreArtista = new JLabel(" Nombre real: ");	
+		labNombreArtista = new JLabel(" Nombre artista: ");	
 		labGenero = new JLabel(" Genero: ");
 		labDuracion = new JLabel(" Duracion: ");
 		
