@@ -64,7 +64,7 @@ public class ArtistasDTO implements IDTO, Serializable
 
 	@Override
 	public String actualizar() {
-		return "UPDATE ARTISTAS SET ID = "+idArtista+",NOMBRE = '"+nombre.trim()+"',NOMBRE_REAL = '"+nombreReal.trim()+"' WHERE ID_ARTICULO = "+idArtista;
+		return "UPDATE ARTISTAS SET ID = "+idArtista+",NOMBRE = '"+nombre.trim()+"',NOMBRE_REAL = '"+nombreReal.trim()+"' WHERE ID = "+idArtista;
 		
 	}
 

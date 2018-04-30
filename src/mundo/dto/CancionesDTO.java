@@ -72,23 +72,23 @@ public class CancionesDTO implements IDTO {
 
 	@Override
 	public String insertar() {
-		return "INSERT INTO CANCIONES (ID, NOMBRE, NOMB_ARTISTA, DURACION, GENERO) VALUES ("+ idCancion+ ", '"+nombre.trim()+"', '"+nombreArtista.trim()+ "', "+ duracion+", '"+genero.trim()+"' )";
+		return "INSERT INTO CANCIONES (ID_CANCION, NOMBRE, NOMB_ARTISTA, DURACION, GENERO) VALUES ("+ idCancion+ ", '"+nombre.trim()+"', '"+nombreArtista.trim()+ "', "+ duracion+", '"+genero.trim()+"' )";
 	}
 
 	@Override
 	public String eliminar() {
-		return  "delete from CANCIONES where id = "+idCancion;
+		return  "delete from CANCIONES where ID_CANCION = "+idCancion;
 	}
 
 	@Override
 	public String actualizar() {
-		return "UPDATE CANCIONES SET ID = '"+idCancion+",NOMBRE = '"+nombre.trim()+",NOMBRE = '"+nombre.trim()+",NOMB_ARTISTA = '"+nombreArtista.trim()+",DURACION = '"+duracion+",GENERO = '"+genero.trim()+"' WHERE ID = "+idCancion;
+		return "UPDATE CANCIONES SET ID_CANCION = '"+idCancion+",NOMBRE = '"+nombre.trim()+",NOMB_ARTISTA = '"+nombreArtista.trim()+",DURACION = '"+duracion+",GENERO = '"+genero.trim()+"' WHERE ID_CANCION = "+idCancion;
 
 	}
 
 	@Override
 	public String consultar() {
-		return "select * from canciones where id = "+idCancion;
+		return "select * from canciones where ID_CANCION = "+idCancion;
 	}
 
 	@Override

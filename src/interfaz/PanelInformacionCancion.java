@@ -10,11 +10,14 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 import mundo.contenedora.Funcion;
+import mundo.contenedora.Mensaje;
+import mundo.contenedora.Nodo;
 import mundo.contenedora.Tabla;
 import mundo.servidor.Usuario;
 
@@ -30,6 +33,8 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 	public final static String CONSULTAR = "Consultar";
 	
 	public final static String CONSULTAR_ID = "Consultar por ID";
+	
+	public final static String INICIAR = "Iniciar";
 		
     private DiagoloCancion principal;
 	
@@ -64,8 +69,12 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 	private JButton butConsultar;
 	
 	private JButton butConsultarID;
+
+	private JButton butIniciar;
 	
 	private Funcion funcion;
+	private Tabla tabla = Tabla.CANCIONES;
+
 	
 	
 	public PanelInformacionCancion( DiagoloCancion ia )
@@ -141,7 +150,7 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 		panelNavegacion.setBorder( borde2 );
 		
 		//Establece las dimensiones del panel
-		panelNavegacion.setPreferredSize( new Dimension( 0,50 ) );
+		panelNavegacion.setPreferredSize( new Dimension( 0,90 ) );
 		
 		butAgregar = new JButton("Insertar");
 		butAgregar.setActionCommand(INSERTAR);
@@ -152,7 +161,7 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 		butEliminar.addActionListener(this);
 		
 		butModificar = new JButton("Modificar");
-		butModificar.setActionCommand(ELIMINAR);
+		butModificar.setActionCommand(MODIFICAR);
 		butModificar.addActionListener(this);
 		
 		butConsultar = new JButton("Consultar");
@@ -163,12 +172,16 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 		butConsultarID.setActionCommand(CONSULTAR_ID);
 		butConsultarID.addActionListener(this);
 		 
-		
+		butIniciar = new JButton("Iniciar");
+		butIniciar.setActionCommand(INICIAR);
+		butIniciar.addActionListener(this);
+				
 		panelNavegacion.add(butAgregar);
 		panelNavegacion.add(butEliminar);
 		panelNavegacion.add(butModificar);
 		panelNavegacion.add(butConsultar);
 		panelNavegacion.add(butConsultarID);
+		panelNavegacion.add(butIniciar);
 		
 		add(panelNavegacion, BorderLayout.SOUTH);
 	}
@@ -186,50 +199,121 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 		}
 		if(ELIMINAR.equals(ejecucion))
 		{
-			funcion = Funcion.DELETE;
+
+			int mensaje = JOptionPane.showConfirmDialog(null, "¿Desea eliminar un registro?", "ELIMINAR", JOptionPane.YES_NO_OPTION);
+			if(mensaje == JOptionPane.YES_OPTION)
+			{
+				JOptionPane.showMessageDialog(null, "Por favor ingrese el ID de la canción que desea eliminar");
+
+				funcion = Funcion.DELETE;
+			}		
 		}
+		
 		if(MODIFICAR.equals(ejecucion))
 		{
 			funcion = Funcion.UPDATE;
 		}
 		if(CONSULTAR.equals(ejecucion))
 		{
-			funcion = Funcion.SELECT;
+			int mensaje = JOptionPane.showConfirmDialog(null, "¿Desea consultar por todos los elementos?", "Consultar?",  JOptionPane.YES_NO_OPTION);
+			if(mensaje == JOptionPane.YES_OPTION)
+			{
+				funcion = Funcion.SELECT;
+			}
+			else
+			{
+				funcion = Funcion.SELECT_ID;
+			}
 		}
-		if(CONSULTAR_ID.equals(ejecucion))
+		
+		
+		if(INICIAR.equals(ejecucion)) 
 		{
-			funcion = Funcion.SELECT_ID;
+			try {
+				Mensaje mensaje = nuevoMensaje();
+				
+				if(funcion.equals(Funcion.SELECT) || funcion.equals(Funcion.SELECT_ID))
+				{
+					Nodo nodo = usuario.envioMensaje(mensaje);
+					
+					if(nodo != null)
+					{
+						String mensajeNodo = "";
+						
+						while(nodo != null)
+						{
+							mensajeNodo +=  nodo.getInformacion().toString() + "\n" ;
+							nodo = nodo.getSiguiente();
+						}
+						
+						txtResultados.setText(mensajeNodo);							
+					}
+				}
+				else
+				{
+					usuario.envioMensaje(mensaje);
+					JOptionPane.showMessageDialog(null, "Se ha realizado la operación " + funcion.toString().toLowerCase() + " correctamente.");
+				}
+				
+				reiniciar();
+				
+			} 
+			catch (Exception e) {
+				// TODO Auto-generated catch block
+				JOptionPane.showMessageDialog(null, "Se ha producido un error: "+ "\n" + e.getMessage());
+			}
+		}
+	}
+		
+		public Mensaje nuevoMensaje() throws Exception
+		{
+			Mensaje mensaje = new Mensaje();
+			
+			if(tabla.equals(Tabla.CANCIONES))
+			{
+				if(funcion.equals(Funcion.SELECT))
+				{
+					
+					mensaje.funcionCanciones(funcion, 0, "", "", 0, "");
+				}
+				else if(txtID.getText().equals(null))
+				{
+					throw new Exception ("Debe ingresar un ID para ejecutar una función.");
+				}
+				else
+				{
+					int id = Integer.parseInt(txtID.getText());
+					String nombre = txtNombreCancion.getText();
+					String nombreArtista = txtNombreArtista.getText();
+					int duracion = Integer.parseInt(txtDuracion.getText());
+					String genero = txtGenero.getText();
+				
+					
+					mensaje.funcionCanciones(funcion, id, nombre, nombreArtista, duracion, genero);
+				}
+				
+			}
+			
+			else
+			{
+				throw new Exception("No se puede ejecutar la operación.");
+			}
+			
+			return mensaje;
+			
 		}
 		
+
+		public void reiniciar()
+		{
+			txtID.setText("");
+			txtNombreCancion.setText("");
+			txtNombreArtista.setText("");
+			txtDuracion.setText("");
+			txtGenero.setText("");
 		
-		
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+			funcion = null;
+			
+		}
 	
 }
