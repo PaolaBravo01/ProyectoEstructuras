@@ -64,7 +64,7 @@ public class ArtistasDAO implements IDAO{
 		ArtistasDTO artista = new ArtistasDTO();
 		artista.setIdArtista(messa.getIdArtista());
 
-		ResultSet rs = con.ejecutaConsulta(artista.consultarTodos());
+		ResultSet rs = con.ejecutaConsulta(artista.consultar());
 
 		Nodo consultado = new Contenedora<>().dato(rs, "mundo.dto.ArtistasDTO");
 

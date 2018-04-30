@@ -144,8 +144,8 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 		butEliminar.setActionCommand(ELIMINAR);
 		butEliminar.addActionListener(this);
 		
-		butModificar = new JButton("Modificar");
-		butModificar.setActionCommand(ELIMINAR);
+		butModificar = new JButton("Actualizar");
+		butModificar.setActionCommand(MODIFICAR);
 		butModificar.addActionListener(this);
 		
 		butConsultar = new JButton("Consultar");
@@ -181,6 +181,7 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 		{
 			funcion = Funcion.INSERT;
 		}
+		
 		if(ELIMINAR.equals(ejecucion))
 		{
 
@@ -192,6 +193,35 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 				funcion = Funcion.DELETE;
 			}
 		}
+		if(MODIFICAR.equals(ejecucion))
+		{
+			funcion = Funcion.UPDATE;
+		}
+		if(CONSULTAR_ID.equals(ejecucion))
+		{
+			int mensaje = JOptionPane.showConfirmDialog(null, "¿Desea consultar por ID?", "Consultar por ID?",  JOptionPane.YES_NO_OPTION);
+			if(mensaje == JOptionPane.YES_OPTION)
+			{
+				funcion = Funcion.SELECT_ID;
+			}
+			else
+			{
+				funcion = Funcion.SELECT;
+			}
+		}
+		if(CONSULTAR.equals(ejecucion))
+		{
+			int mensaje = JOptionPane.showConfirmDialog(null, "¿Desea consultar todos los elementos?", "Consultar",  JOptionPane.YES_NO_OPTION);
+			if(mensaje == JOptionPane.YES_OPTION)
+			{
+				funcion = Funcion.SELECT;
+			}
+			else
+			{
+				reiniciar();
+			}
+		}
+		
 		if(INICIAR.equals(ejecucion)) 
 		{
 			try {
