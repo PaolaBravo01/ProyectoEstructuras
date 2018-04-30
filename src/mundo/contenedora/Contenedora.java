@@ -38,7 +38,7 @@ public class Contenedora<T>
 					
 					
 					Method metodo = buscarMetodo(metaDatos.getColumnName(i), metodos);
-					if(metodo != null)
+					if(metodos != null)
 					{
 						darValor(dato, metodo, rs.getObject(i));
 					}
