@@ -12,7 +12,7 @@ import mundo.contenedora.Nodo;
 public class Usuario 
 {
 
-	public final static int PUERTO = 2027;
+	public final static int PUERTO = 8786;
 	
 	public Usuario()
 	{

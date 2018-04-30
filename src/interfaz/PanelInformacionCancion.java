@@ -14,10 +14,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
+import mundo.contenedora.Funcion;
+import mundo.contenedora.Tabla;
+import mundo.servidor.Usuario;
+
 public class PanelInformacionCancion extends JPanel implements ActionListener {
 
 	
-	public final static String AGREGAR = "Agregar";
+	public final static String INSERTAR = "Insertar";
 	
 	public final static String ELIMINAR = "Eliminar";
 	
@@ -60,6 +64,8 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 	private JButton butConsultar;
 	
 	private JButton butConsultarID;
+	
+	private Funcion funcion;
 	
 	
 	public PanelInformacionCancion( DiagoloCancion ia )
@@ -137,8 +143,8 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 		//Establece las dimensiones del panel
 		panelNavegacion.setPreferredSize( new Dimension( 0,50 ) );
 		
-		butAgregar = new JButton("Agregar");
-		butAgregar.setActionCommand(AGREGAR);
+		butAgregar = new JButton("Insertar");
+		butAgregar.setActionCommand(INSERTAR);
 		butAgregar.addActionListener(this);
 		
 		butEliminar = new JButton("Eliminar");
@@ -169,10 +175,60 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent evento) 
+	{
+		String ejecucion = evento.getActionCommand();
+		Usuario usuario = new Usuario();
+		
+		if(INSERTAR.equals(ejecucion))
+		{
+			funcion = Funcion.INSERT;
+		}
+		if(ELIMINAR.equals(ejecucion))
+		{
+			funcion = Funcion.DELETE;
+		}
+		if(MODIFICAR.equals(ejecucion))
+		{
+			funcion = Funcion.UPDATE;
+		}
+		if(CONSULTAR.equals(ejecucion))
+		{
+			funcion = Funcion.SELECT;
+		}
+		if(CONSULTAR_ID.equals(ejecucion))
+		{
+			funcion = Funcion.SELECT_ID;
+		}
+		
+		
+		
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

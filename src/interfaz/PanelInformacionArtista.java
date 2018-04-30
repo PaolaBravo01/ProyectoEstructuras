@@ -8,14 +8,22 @@ import java.awt.GridLayout;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+
+import mundo.contenedora.Funcion;
+import mundo.servidor.Usuario;
+import mundo.contenedora.Mensaje;
+import mundo.contenedora.Nodo;
+import mundo.contenedora.Tabla;
 
 public class PanelInformacionArtista extends JPanel implements ActionListener
 {
@@ -29,6 +37,8 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 	public final static String CONSULTAR = "Consultar";
 	
 	public final static String CONSULTAR_ID = "Consultar por ID";
+	
+	public final static String INICIAR = "Iniciar";
 		
     private DialogoArtistas principal;
 	
@@ -55,6 +65,12 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 	private JButton butConsultar;
 	
 	private JButton butConsultarID;
+	
+	private JButton butIniciar;
+	
+	private Funcion funcion;
+	
+	private Tabla tabla = Tabla.ARTISTAS;
 	
 	
 	public PanelInformacionArtista( DialogoArtistas ia )
@@ -118,7 +134,7 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 		panelNavegacion.setBorder( borde2 );
 		
 		//Establece las dimensiones del panel
-		panelNavegacion.setPreferredSize( new Dimension( 0,50 ) );
+		panelNavegacion.setPreferredSize( new Dimension( 0,90 ) );
 		
 		butAgregar = new JButton("Agregar");
 		butAgregar.setActionCommand(AGREGAR);
@@ -139,23 +155,125 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 		butConsultarID = new JButton("Consultar por ID");
 		butConsultarID.setActionCommand(CONSULTAR_ID);
 		butConsultarID.addActionListener(this);
-		 
+		
+		butIniciar = new JButton("Iniciar");
+		butIniciar.setActionCommand(INICIAR);
+		butIniciar.addActionListener(this);
 		
 		panelNavegacion.add(butAgregar);
 		panelNavegacion.add(butEliminar);
 		panelNavegacion.add(butModificar);
 		panelNavegacion.add(butConsultar);
 		panelNavegacion.add(butConsultarID);
+		panelNavegacion.add(butIniciar);
 		
 		add(panelNavegacion, BorderLayout.SOUTH);
 	}
 
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent evento) 
+	{
+		String ejecucion = evento.getActionCommand();
+		Usuario usuario = new Usuario();
 		
+		if(AGREGAR.equals(ejecucion))
+		{
+			funcion = Funcion.INSERT;
+		}
+		if(ELIMINAR.equals(ejecucion))
+		{
+
+			int mensaje = JOptionPane.showConfirmDialog(null, "¿Desea eliminar un registro?", "ELIMINAR", JOptionPane.YES_NO_OPTION);
+			if(mensaje == JOptionPane.YES_OPTION)
+			{
+				JOptionPane.showMessageDialog(null, "Por favor ingrese el ID del artista que desea eliminar");
+
+				funcion = Funcion.DELETE;
+			}
+		}
+		if(INICIAR.equals(ejecucion)) 
+		{
+			try {
+				Mensaje mensaje = nuevoMensaje();
+				
+				if(funcion.equals(Funcion.SELECT) || funcion.equals(Funcion.SELECT_ID))
+				{
+					Nodo nodo = usuario.envioMensaje(mensaje);
+					
+					if(nodo != null)
+					{
+						String mensajeNodo = "";
+						
+						while(nodo != null)
+						{
+							mensajeNodo +=  nodo.getInformacion().toString() + "\n" ;
+							nodo = nodo.getSiguiente();
+						}
+						
+						txtResultado.setText(mensajeNodo);							
+					}
+				}
+				else
+				{
+					usuario.envioMensaje(mensaje);
+					JOptionPane.showMessageDialog(null, "Se ha realizado la operación " + funcion.toString().toLowerCase() + " correctamente.");
+				}
+				
+				reiniciar();
+				
+			} 
+			catch (Exception e) {
+				// TODO Auto-generated catch block
+				JOptionPane.showMessageDialog(null, "Se ha producido un error: "+ "\n" + e.getMessage());
+			}
+		}
 	}
-	
+		
+		public Mensaje nuevoMensaje() throws Exception
+		{
+			Mensaje mensaje = new Mensaje();
+			
+			if(tabla.equals(Tabla.ARTISTAS))
+			{
+				if(funcion.equals(Funcion.SELECT))
+				{
+					mensaje.funcionArtistas(funcion, 0, "", "");
+				}
+				else if(txtID.getText().equals(null))
+				{
+					throw new Exception ("Debe ingresar un ID para ejecutar una función.");
+				}
+				else
+				{
+					int id = Integer.parseInt(txtID.getText());
+					String nombre = txtNombre.getText();
+					String nombreReal = txtNombreReal.getText();
+				
+					
+					mensaje.funcionArtistas(funcion, id, nombre, nombreReal);
+				}
+				
+			}
+			
+			else
+			{
+				throw new Exception("No se puede ejecutar la operación.");
+			}
+			
+			return mensaje;
+			
+		}
+		
+
+		public void reiniciar()
+		{
+			txtID.setText("");
+			txtNombre.setText("");
+			txtNombreReal.setText("");
+			
+			funcion = null;
+			
+		}
 	
 }

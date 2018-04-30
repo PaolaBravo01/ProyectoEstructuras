@@ -15,7 +15,7 @@ import mundo.facade.Facade;
 public class Servidor 
 {
 	
-	public static final int PUERTO = 2027;
+	public static final int PUERTO = 8786;
 	public static final int NO_CONEXION = 20;
 	private Servicios servicio;
 	private ServerSocket server;
@@ -25,9 +25,9 @@ public class Servidor
 		try
 		{
 			server = new ServerSocket(PUERTO, NO_CONEXION);
+			servicio = new Servicios();
 
-			boolean i = true;
-			while(i==true)
+			while(true)
 			{
 				System.out.println("Esperando......");
 

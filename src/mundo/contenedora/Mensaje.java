@@ -33,7 +33,7 @@ public class Mensaje implements Serializable
 		funcion = pFuncion;
 		idArtista = pIDArtista;
 		nombre = pNombre;
-		nombreReal = pNombre;
+		nombreReal = pNombreReal;
 	}
 	
 	public void funcionCanciones(Funcion pFuncion, int pIdCancion, String pNombreCancion, String pNombreArtista, int pDuracion, String pGenero)

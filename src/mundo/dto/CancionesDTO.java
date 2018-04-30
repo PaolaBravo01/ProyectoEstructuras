@@ -81,8 +81,7 @@ public class CancionesDTO implements IDTO {
 
 	@Override
 	public String actualizar() {
-		return "UPDATE CANCIONES SET GENERO = '"
-				+genero.trim()+"' WHERE ID = "+idCancion;
+		return "UPDATE CANCIONES SET GENERO = '"+genero.trim()+"' WHERE ID = "+idCancion;
 	}
 
 	@Override
