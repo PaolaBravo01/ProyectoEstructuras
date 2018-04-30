@@ -10,7 +10,7 @@ public class CancionesDTO implements IDTO, Serializable {
 	
 	private String nombre;
 	
-	private String nombreArtista;
+	private String nomArtista;
 	
 	private int duracion;
 	
@@ -27,7 +27,7 @@ public class CancionesDTO implements IDTO, Serializable {
 
 		idCancion = pId;
 		nombre = pNombre;
-		nombreArtista = pNombreArtista;
+		nomArtista = pNombreArtista;
 		duracion = pDuracion;
 		genero = pGenero;	
 	}
@@ -49,12 +49,12 @@ public class CancionesDTO implements IDTO, Serializable {
 		nombre = pNombre;
 	}
 
-	public String getNombreArtista() {
-		return nombreArtista;
+	public String getNomArtista() {
+		return nomArtista;
 	}
 
-	public void setNombreArtista(String pNombreArtista) {
-		nombreArtista = pNombreArtista;
+	public void setNomArtista(String pNombreArtista) {
+		nomArtista = pNombreArtista;
 	}
 
 	public int getDuracion() {
@@ -75,7 +75,7 @@ public class CancionesDTO implements IDTO, Serializable {
 
 	@Override
 	public String insertar() {
-		return "INSERT INTO CANCIONES (ID_CANCION, NOMBRE, NOM_ARTISTA, DURACION, GENERO) VALUES ("+ idCancion+ ", '"+nombre.trim()+"', '"+nombreArtista.trim()+ "', "+ duracion+", '"+genero.trim()+"' )";
+		return "INSERT INTO CANCIONES (ID_CANCION, NOMBRE, NOM_ARTISTA, DURACION, GENERO) VALUES ("+ idCancion+ ", '"+nombre.trim()+"', '"+nomArtista.trim()+ "', "+ duracion+", '"+genero.trim()+"' )";
 	}
 
 	@Override
@@ -85,12 +85,12 @@ public class CancionesDTO implements IDTO, Serializable {
 
 	@Override
 	public String actualizar() {
-		return "UPDATE CANCIONES SET ID_CANCION = "+idCancion+",NOMBRE = '"+nombre.trim()+"', NOM_ARTISTA = '"+nombreArtista.trim()+"', DURACION = "+duracion+", GENERO = '"+genero.trim()+"' WHERE ID_CANCION = "+idCancion;
+		return "UPDATE CANCIONES SET ID_CANCION = "+idCancion+",NOMBRE = '"+nombre.trim()+"', NOM_ARTISTA = '"+nomArtista.trim()+"', DURACION = "+duracion+", GENERO = '"+genero.trim()+"' WHERE ID_CANCION = "+idCancion;
 	}
 
 	@Override
 	public String consultar() {
-		return "Select ID_CANCION, NOMBRE, NOM_ARTISTA, DURACION, GENERO, FROM CANCIONES WHERE ID_CANCION = " +idCancion;
+		return "Select ID_CANCION, NOMBRE, NOM_ARTISTA, DURACION, GENERO FROM CANCIONES WHERE ID_CANCION = " +idCancion;
 		
 	}
 
@@ -102,6 +102,6 @@ public class CancionesDTO implements IDTO, Serializable {
 
 	public String toString() 
 	{
-		return "ID="+idCancion+"  Nombre="+nombre+"  Nombre Artista="+nombreArtista+"  Duracion="+duracion+"  Genero="+ genero ;
+		return "ID="+idCancion+"  Nombre="+nombre+"  Nombre Artista="+nomArtista+"  Duracion="+duracion+"  Genero="+ genero ;
 	}
 }

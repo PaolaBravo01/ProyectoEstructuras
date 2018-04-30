@@ -290,7 +290,7 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 				int id = Integer.parseInt(txtID.getText());
 				String nombreCancion = txtNombreCancion.getText();
 				String nombreArtista = txtNombreArtista.getText();
-				int duracion = Integer.parseInt(txtDuracion.getText());
+				int duracion = txtDuracion.getText().isEmpty() ? 0 : Integer.parseInt(txtDuracion.getText());
 				String genero = txtGenero.getText();
 			
 				

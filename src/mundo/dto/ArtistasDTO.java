@@ -7,7 +7,7 @@ public class ArtistasDTO implements IDTO, Serializable
 	
 	private static final long serialVersionUID = 4567897654L;
 
-	private int idArtista;
+	private int id;
 	
 	private String nombre;
 	
@@ -21,18 +21,18 @@ public class ArtistasDTO implements IDTO, Serializable
 	{
 		super();
 
-		idArtista = pIdArtista;
+		id = pIdArtista;
 		nombre = pNombre;
 		nombreReal = pNombreReal;
 	}
 	
 	
-	public int getIdArtista() {
-		return idArtista;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdArtista(int PIdArtista) {
-		idArtista = PIdArtista;
+	public void setId(int PIdArtista) {
+		id = PIdArtista;
 	}
 
 	public String getNombre() {
@@ -54,23 +54,23 @@ public class ArtistasDTO implements IDTO, Serializable
 	@Override
 	public String insertar() {
 		
-		return "INSERT INTO ARTISTAS (ID, NOMBRE, NOMBRE_REAL) VALUES ("+ idArtista + ", '"+ nombre.trim()+"', '"+nombreReal.trim()+"')" ;
+		return "INSERT INTO ARTISTAS (ID, NOMBRE, NOMBRE_REAL) VALUES ("+ id + ", '"+ nombre.trim()+"', '"+nombreReal.trim()+"')" ;
 	}
 
 	@Override
 	public String eliminar() {
-		return "delete from ARTISTAS where id = "+idArtista;
+		return "delete from ARTISTAS where id = "+id;
 	}
 
 	@Override
 	public String actualizar() {
-		return "UPDATE ARTISTAS SET ID = "+idArtista+",NOMBRE = '"+nombre.trim()+"',NOMBRE_REAL = '"+nombreReal.trim()+"' WHERE ID = "+idArtista;
+		return "UPDATE ARTISTAS SET ID = "+id+",NOMBRE = '"+nombre.trim()+"',NOMBRE_REAL = '"+nombreReal.trim()+"' WHERE ID = "+id;
 		
 	}
 
 	@Override
 	public String consultar() {
-		return "SELECT ID, NOMBRE, NOMBRE_REAL, FROM ARTISTAS WHERE ID ="+idArtista;
+		return "SELECT ID, NOMBRE, NOMBRE_REAL FROM ARTISTAS WHERE ID ="+id;
 	}
 
 	@Override
@@ -80,7 +80,7 @@ public class ArtistasDTO implements IDTO, Serializable
 	
 	
 	public String toString() {
-		return "ID="+ idArtista +"  Nombre=" + nombre +"  Nombre Real="+ nombreReal + "\n" ;
+		return "ID="+ id +"  Nombre=" + nombre +"  Nombre Real="+ nombreReal + "\n" ;
 	}
 
 	

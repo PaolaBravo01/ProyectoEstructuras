@@ -35,7 +35,7 @@ public class Contenedora<T>
 			{
 				for(int i = 1; i <= numeroColumnas; i++ )
 				{
-										
+					System.out.println(metaDatos.getColumnName(i));
 					Method metodo = buscarMetodo(metaDatos.getColumnName(i), metodos);
 					if(metodo != null)
 					{
@@ -43,6 +43,8 @@ public class Contenedora<T>
 					}
 					
 				}
+				
+				System.out.println(dato.toString());
 				
 				if(cabeza == null)
 				{
@@ -85,7 +87,9 @@ public class Contenedora<T>
 	public Method buscarMetodo(String nombre, Method[] metodos)
 	{
 		String variable = "set" + nombre;
+		variable = variable.replace("_", "");
 		Method resultado = null;
+		System.out.println("Metodo buscando" + variable);
 		for(int i = 0; i < metodos.length; i++)
 		{
 			if(variable.compareToIgnoreCase(metodos[i].getName())==0)

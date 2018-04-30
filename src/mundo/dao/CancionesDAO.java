@@ -58,7 +58,7 @@ public class CancionesDAO implements IDAO
 
 		ResultSet rs = con.ejecutaConsulta(cancion.consultarTodos());
 
-		Nodo consultado = new Contenedora<>().dato(rs, "mundo.dto.CancionesDTO");
+		Nodo consultado = new Contenedora<>().dato(rs, CancionesDTO.class.getName());
 
 		return consultado;
 	
@@ -72,7 +72,7 @@ public class CancionesDAO implements IDAO
 		
 		ResultSet rs = con.ejecutaConsulta(cancion.consultar());
 		
-		Nodo consultado = new Contenedora<>().dato(rs, "mundo.dto.CancionesDTO");
+		Nodo consultado = new Contenedora<>().dato(rs, CancionesDTO.class.getName());
 		
 		return consultado;
 	}

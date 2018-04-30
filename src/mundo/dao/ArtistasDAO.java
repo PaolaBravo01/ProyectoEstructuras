@@ -10,7 +10,8 @@ import java.sql.ResultSet;
 import mundo.contenedora.Contenedora;
 import mundo.contenedora.Mensaje;
 
-public class ArtistasDAO implements IDAO{
+public class ArtistasDAO implements IDAO
+{
 
 	@Override
 	public void insertar(Conexion con, Mensaje messa) 
@@ -28,7 +29,7 @@ public class ArtistasDAO implements IDAO{
 	public void eliminar(Conexion con, Mensaje messa) 
 	{
 		ArtistasDTO nvo = new ArtistasDTO();
-		nvo.setIdArtista(messa.getIdArtista());
+		nvo.setId(messa.getIdArtista());
 		
 		con.ejecutaActualizacion(nvo.eliminar());
 		
@@ -53,7 +54,7 @@ public class ArtistasDAO implements IDAO{
 
 		ResultSet rs = con.ejecutaConsulta(artista.consultarTodos());
 
-		Nodo consultado = new Contenedora<>().dato(rs, "mundo.dto.ArtistasDTO");
+		Nodo consultado = new Contenedora<>().dato(rs, ArtistasDTO.class.getName());
 
 		return consultado;
 	}
@@ -62,11 +63,11 @@ public class ArtistasDAO implements IDAO{
 	public Nodo consultar(Conexion con, Mensaje messa) 
 	{
 		ArtistasDTO artista = new ArtistasDTO();
-		artista.setIdArtista(messa.getIdArtista());
+		artista.setId(messa.getIdArtista());
 
 		ResultSet rs = con.ejecutaConsulta(artista.consultar());
 
-		Nodo consultado = new Contenedora<>().dato(rs, "mundo.dto.ArtistasDTO");
+		Nodo consultado = new Contenedora<>().dato(rs, ArtistasDTO.class.getName());
 
 		return consultado;
 	}
