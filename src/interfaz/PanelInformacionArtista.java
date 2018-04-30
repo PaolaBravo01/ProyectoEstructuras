@@ -237,7 +237,7 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 						
 						while(nodo != null)
 						{
-							resultado +=  nodo.getInformacion().toString() + "\n" +"";
+							resultado +=  nodo.getInformacion().toString() + "\n";
 							nodo = nodo.getSiguiente();
 						}
 						
@@ -258,7 +258,7 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 		}
 	}
 		
-		public Mensaje nuevoMensaje() throws Exception
+		public Mensaje nuevoMensaje()
 		{
 			Mensaje mensaje = new Mensaje();
 			

@@ -255,7 +255,7 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 						
 						while(nodo != null)
 						{
-							resultado +=  nodo.getInformacion().toString() + "\n" +"" ;
+							resultado +=  nodo.getInformacion().toString() + "\n";
 							nodo = nodo.getSiguiente();
 						}
 						
@@ -268,6 +268,7 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 					JOptionPane.showMessageDialog(null, "Se ha realizado la operación correctamente.");
 				}
 				
+				
 			} 
 			catch (Exception e) {
 				JOptionPane.showMessageDialog(null, "Se ha producido un error: "+ "\n" + e.getMessage());
@@ -275,35 +276,31 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 		}
 	}
 		
-		public Mensaje nuevoMensaje() 
-		{
-			Mensaje mensaje = new Mensaje();
-			
-			if(funcion.equals(Funcion.SELECT))
+	public Mensaje nuevoMensaje()
+	{
+		Mensaje mensaje = new Mensaje();
+		
+		if(funcion.equals(Funcion.SELECT))
 			{
 				
-				mensaje.funcionCanciones(funcion, 0, "", "", 0, "");
-			}
-			else if(funcion.equals(Funcion.SELECT_ID)) 
-			{
-				int id = Integer.parseInt(txtID.getText());
-				mensaje.funcionCanciones(funcion, id, "", "", 0, "");
-
+				mensaje.funcionCanciones(funcion, 1, " ", " ", 1, "");
 			}
 			else
 			{
 				int id = Integer.parseInt(txtID.getText());
-				String nombre = txtNombreCancion.getText();
+				String nombreCancion = txtNombreCancion.getText();
 				String nombreArtista = txtNombreArtista.getText();
 				int duracion = Integer.parseInt(txtDuracion.getText());
 				String genero = txtGenero.getText();
+			
 				
-				mensaje.funcionCanciones(funcion, id, nombre, nombreArtista, duracion, genero);
+				mensaje.funcionCanciones(funcion, id, nombreCancion, nombreArtista, duracion, genero);
 			}
 			
-			return mensaje;
-			
-		}
+		
+		return mensaje;
+		
+	}
 		
 	
 }

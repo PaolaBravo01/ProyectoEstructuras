@@ -70,13 +70,11 @@ public class ArtistasDTO implements IDTO, Serializable
 
 	@Override
 	public String consultar() {
-		// TODO Auto-generated method stub
 		return "SELECT ID, NOMBRE, NOMBRE_REAL, FROM ARTISTAS WHERE ID ="+idArtista;
 	}
 
 	@Override
 	public String consultarTodos() {
-		// TODO Auto-generated method stub
 		return "SELECT * FROM ARTISTAS";
 	}
 	

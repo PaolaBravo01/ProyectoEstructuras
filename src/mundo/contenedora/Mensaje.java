@@ -124,7 +124,4 @@ public class Mensaje implements Serializable
 		this.genero = genero;
 	}
 
-	
-	
-	
 }

@@ -85,7 +85,7 @@ public class CancionesDTO implements IDTO, Serializable {
 
 	@Override
 	public String actualizar() {
-		return "UPDATE CANCIONES SET ID_CANCION = "+idCancion+", NOMBRE = '"+nombre.trim()+"', NOM_ARTISTA = '"+nombreArtista.trim()+"', DURACION = "+duracion+", GENERO = '"+genero.trim()+"' WHERE ID_CANCION = "+idCancion;
+		return "UPDATE CANCIONES SET ID_CANCION = "+idCancion+",NOMBRE = '"+nombre.trim()+"', NOM_ARTISTA = '"+nombreArtista.trim()+"', DURACION = "+duracion+", GENERO = '"+genero.trim()+"' WHERE ID_CANCION = "+idCancion;
 	}
 
 	@Override
