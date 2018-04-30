@@ -99,6 +99,6 @@ public class CancionesDTO implements IDTO {
 
 	public String toString() 
 	{
-		return "ID="+idCancion+"  Nombre="+nombre.trim()+"  Nombre Artista="+nombreArtista.trim()+"  Duracion"+duracion+"  Genero"+ genero.trim() ;
+		return "ID="+idCancion+"  Nombre="+nombre+"  Nombre Artista="+nombreArtista+"  Duracion="+duracion+"  Genero="+ genero ;
 	}
 }
