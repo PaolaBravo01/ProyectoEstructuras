@@ -16,6 +16,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
@@ -55,7 +58,7 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 	
 	private JTextField txtNombreReal;
 	
-	private JTextField txtResultado;
+	private JTextArea txtResultado;
 	
 	private JButton butAgregar;
 	
@@ -68,6 +71,8 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 	private JButton butConsultarID;
 	
 	private JButton butIniciar;
+	
+	private JScrollPane scroll;
 	
 	private Funcion funcion;
 	
@@ -116,9 +121,12 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 		panelResultados.setLayout(new BorderLayout());
 		panelResultados.setBorder( borde1 );
 		
-		txtResultado = new JTextField();
+		txtResultado = new JTextArea();
 		txtResultado.setBackground(Color.WHITE);
 		txtResultado.setEditable(false);
+		
+		scroll = new JScrollPane(txtResultado);
+		
 		panelResultados.add(txtResultado,BorderLayout.CENTER);
 		
 		add(panelResultados);

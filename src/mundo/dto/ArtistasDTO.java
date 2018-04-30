@@ -80,7 +80,7 @@ public class ArtistasDTO implements IDTO, Serializable
 	
 	
 	public String toString() {
-		return "ID="+ id +"  Nombre=" + nombre +"  Nombre Real="+ nombreReal + "\n" ;
+		return "Artista:" + "\n" + "ID = "+ id +"\n  Nombre = " + nombre +"\n  Nombre Real = "+ nombreReal + "\n \n" ;
 	}
 
 	
