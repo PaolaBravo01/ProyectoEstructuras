@@ -35,10 +35,16 @@ public class Contenedora<T>
 			{
 				for(int i = 1; i <= numeroColumnas; i++ )
 				{
+					String nombreColumna = metaDatos.getColumnName(i);
 					
+					if(nombreColumna.contains("_"))
+					{
+						int num = nombreColumna.indexOf('_');
+						nombreColumna = nombreColumna.substring(0, num);
+					}
 					
-					Method metodo = buscarMetodo(metaDatos.getColumnName(i), metodos);
-					if(metodos != null)
+					Method metodo = buscarMetodo(nombreColumna, metodos);
+					if(metodo != null)
 					{
 						darValor(dato, metodo, rs.getObject(i));
 					}
@@ -64,10 +70,10 @@ public class Contenedora<T>
 						
 					}
 					
-					Nodo<T> temp = new Nodo<T>();
+					Nodo<T> nuevo = new Nodo<T>();
 
-					temp.setInformacion(dato);
-					actual.setSiguiente(temp);
+					nuevo.setInformacion(dato);
+					actual.setSiguiente(nuevo);
 										
 					dato = (T) Class.forName(clase).newInstance();
 				}

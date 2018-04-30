@@ -16,11 +16,12 @@ public class CancionesDTO implements IDTO {
 	
 	public CancionesDTO()
 	{
-		super();
 	}
 	
 	public CancionesDTO(int pId, String pNombre, String pNombreArtista, int pDuracion, String pGenero )
 	{
+		super();
+
 		idCancion = pId;
 		nombre = pNombre;
 		nombreArtista = pNombreArtista;
@@ -81,7 +82,8 @@ public class CancionesDTO implements IDTO {
 
 	@Override
 	public String actualizar() {
-		return "UPDATE CANCIONES SET GENERO = '"+genero.trim()+"' WHERE ID = "+idCancion;
+		return "UPDATE CANCIONES SET ID = '"+idCancion+",NOMBRE = '"+nombre.trim()+",NOMBRE = '"+nombre.trim()+",NOMB_ARTISTA = '"+nombreArtista.trim()+",DURACION = '"+duracion+",GENERO = '"+genero.trim()+"' WHERE ID = "+idCancion;
+
 	}
 
 	@Override
@@ -97,6 +99,6 @@ public class CancionesDTO implements IDTO {
 
 	public String toString() 
 	{
-		return "CancionesDTO [ID=" + idCancion + ", NOMBRE=" + nombre + ", NOM_ARTISTA=" + nombreArtista +" DURACION="+ duracion+", GENERO="+ genero +" ]";
+		return "ID="+idCancion+"  Nombre="+nombre.trim()+"  Nombre Artista="+nombreArtista.trim()+"  Duracion"+duracion+"  Genero"+ genero.trim() ;
 	}
 }

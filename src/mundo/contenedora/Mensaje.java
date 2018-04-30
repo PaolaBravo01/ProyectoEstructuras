@@ -5,7 +5,6 @@ import java.io.Serializable;
 public class Mensaje implements Serializable
 {
 	
-	
 	private Funcion funcion;
 	private Tabla tabla;
 	
