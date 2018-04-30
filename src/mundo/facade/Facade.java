@@ -72,6 +72,7 @@ public class Facade implements IFacade
 		
 		if(messa.getTabla().equals(Tabla.ARTISTAS))
 		{
+			System.out.println("helloooooooooy");
 			nvo = artistasDao.consultarTodos(con, messa);
 		}
 		else

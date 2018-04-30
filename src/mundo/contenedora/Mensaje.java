@@ -5,15 +5,14 @@ import java.io.Serializable;
 public class Mensaje implements Serializable
 {
 	
+	private static final long serialVersionUID = 518405140372484957L;
 	private Funcion funcion;
 	private Tabla tabla;
 	
-	//para artistas
 	private int idArtista;
 	private String nombre;
 	private String nombreReal;
 	
-	//para canciones
 	private int idCancion;
 	private String nombreCancion;
 	private String nombreArtista;
@@ -125,7 +124,4 @@ public class Mensaje implements Serializable
 		this.genero = genero;
 	}
 
-	
-	
-	
 }

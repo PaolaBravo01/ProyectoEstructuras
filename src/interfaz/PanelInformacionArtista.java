@@ -16,6 +16,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
@@ -55,7 +58,7 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 	
 	private JTextField txtNombreReal;
 	
-	private JTextField txtResultado;
+	private JTextArea txtResultado;
 	
 	private JButton butAgregar;
 	
@@ -69,17 +72,16 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 	
 	private JButton butIniciar;
 	
+	private JScrollPane scroll;
+	
 	private Funcion funcion;
-	
-	private Tabla tabla = Tabla.ARTISTAS;
-	
 	
 	public PanelInformacionArtista( DialogoArtistas ia )
 	{
 		principal = ia;
 		
 		TitledBorder borde = BorderFactory.createTitledBorder("Información del artista");
-		borde.setTitleColor( Color.black );
+		borde.setTitleColor( Color.BLACK );
 		setBorder( borde );
 		
 		// Distribuidor grafico en los bordes
@@ -119,9 +121,12 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 		panelResultados.setLayout(new BorderLayout());
 		panelResultados.setBorder( borde1 );
 		
-		txtResultado = new JTextField();
+		txtResultado = new JTextArea();
 		txtResultado.setBackground(Color.WHITE);
 		txtResultado.setEditable(false);
+		
+		scroll = new JScrollPane(txtResultado);
+		
 		panelResultados.add(txtResultado,BorderLayout.CENTER);
 		
 		add(panelResultados);
@@ -180,7 +185,12 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 		
 		if(AGREGAR.equals(ejecucion))
 		{
-			funcion = Funcion.INSERT;
+			int mensaje = JOptionPane.showConfirmDialog(null, "¿Desea agregar un registro?", "AGREGAR", JOptionPane.YES_NO_OPTION);
+			if(mensaje == JOptionPane.YES_OPTION)
+			{
+				JOptionPane.showMessageDialog(null, "Por favor ingrese los datos del artista que desea agregar");
+				funcion = Funcion.INSERT;
+			}
 		}
 		
 		if(ELIMINAR.equals(ejecucion))
@@ -196,7 +206,13 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 		}
 		if(MODIFICAR.equals(ejecucion))
 		{
-			funcion = Funcion.UPDATE;
+			int mensaje = JOptionPane.showConfirmDialog(null, "¿Desea actualizar un registro?", "ACTUALIZAR", JOptionPane.YES_NO_OPTION);
+			if(mensaje == JOptionPane.YES_OPTION)
+			{
+				JOptionPane.showMessageDialog(null, "Por favor ingrese los datos del artista que desea actualizar");
+
+				funcion = Funcion.UPDATE;
+			}
 		}
 		if(CONSULTAR.equals(ejecucion))
 		{
@@ -207,6 +223,8 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 			}
 			else
 			{
+				JOptionPane.showMessageDialog(null, "Por favor ingrese el ID del artista que desea consultar");
+				
 				funcion = Funcion.SELECT_ID;
 			}
 		}
@@ -223,47 +241,39 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 					
 					if(nodo != null)
 					{
-						String mensajeNodo = "";
+						String resultado = "";
 						
 						while(nodo != null)
 						{
-							mensajeNodo +=  nodo.getInformacion().toString() + "\n" ;
+							resultado +=  nodo.getInformacion().toString() + "\n";
 							nodo = nodo.getSiguiente();
 						}
 						
-						txtResultado.setText(mensajeNodo);							
+						txtResultado.setText(resultado);							
 					}
 				}
 				else
 				{
 					usuario.envioMensaje(mensaje);
-					JOptionPane.showMessageDialog(null, "Se ha realizado la operación " + funcion.toString().toLowerCase() + " correctamente.");
+					JOptionPane.showMessageDialog(null, "Se ha realizado la operación correctamente.");
 				}
 				
-				reiniciar();
 				
 			} 
 			catch (Exception e) {
-				// TODO Auto-generated catch block
 				JOptionPane.showMessageDialog(null, "Se ha producido un error: "+ "\n" + e.getMessage());
 			}
 		}
 	}
 		
-		public Mensaje nuevoMensaje() throws Exception
+		public Mensaje nuevoMensaje()
 		{
 			Mensaje mensaje = new Mensaje();
 			
-			if(tabla.equals(Tabla.ARTISTAS))
-			{
-				if(funcion.equals(Funcion.SELECT))
+			if(funcion.equals(Funcion.SELECT))
 				{
 					
-					mensaje.funcionArtistas(funcion, 0, "", "");
-				}
-				else if(txtID.getText().equals(null))
-				{
-					throw new Exception ("Debe ingresar un ID para ejecutar una función.");
+					mensaje.funcionArtistas(funcion, 1, " ", " ");
 				}
 				else
 				{
@@ -275,26 +285,11 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 					mensaje.funcionArtistas(funcion, id, nombre, nombreReal);
 				}
 				
-			}
-			
-			else
-			{
-				throw new Exception("No se puede ejecutar la operación.");
-			}
 			
 			return mensaje;
 			
 		}
 		
 
-		public void reiniciar()
-		{
-			txtID.setText("");
-			txtNombre.setText("");
-			txtNombreReal.setText("");
-			
-			funcion = null;
-			
-		}
 	
 }
