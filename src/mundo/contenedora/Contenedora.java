@@ -5,7 +5,6 @@ import java.lang.reflect.Method;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 
-import mundo.dto.IDTO;
 /**
  * Clase que me crea el objeto
  * @author Paola
@@ -17,9 +16,6 @@ public class Contenedora<T>
 	
 	private Nodo<T> cabeza;
 	
-	
-	
-
 	public Contenedora() {
 		cabeza = null;
 	}
@@ -39,6 +35,8 @@ public class Contenedora<T>
 			{
 				for(int i = 1; i <= numeroColumnas; i++ )
 				{
+					
+					
 					Method metodo = buscarMetodo(metaDatos.getColumnName(i), metodos);
 					if(metodo != null)
 					{
@@ -103,7 +101,7 @@ public class Contenedora<T>
 	
 	public void darValor(T datito, Method metodito,Object res) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException
 	{
-		metodito.invoke(res, datito);
+		metodito.invoke(datito, res);
 	}
 	
 

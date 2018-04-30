@@ -1,9 +1,12 @@
 package mundo.dto;
 
+import java.io.Serializable;
 
-public class ArtistasDTO implements IDTO
+public class ArtistasDTO implements IDTO, Serializable
 {
 	
+	private static final long serialVersionUID = 4567897654L;
+
 	private int idArtista;
 	
 	private String nombre;
@@ -12,18 +15,18 @@ public class ArtistasDTO implements IDTO
 	
 	public ArtistasDTO()
 	{
-		super();
 	}
 	
 	public ArtistasDTO(int pIdArtista, String pNombre, String pNombreReal)
 	{
+		super();
+
 		idArtista = pIdArtista;
 		nombre = pNombre;
 		nombreReal = pNombreReal;
 	}
 	
 	
-
 	public int getIdArtista() {
 		return idArtista;
 	}

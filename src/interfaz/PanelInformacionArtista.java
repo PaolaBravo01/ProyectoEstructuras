@@ -28,6 +28,7 @@ import mundo.contenedora.Tabla;
 public class PanelInformacionArtista extends JPanel implements ActionListener
 {
 	
+
 	public final static String AGREGAR = "Agregar";
 	
 	public final static String ELIMINAR = "Eliminar";
@@ -197,30 +198,19 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 		{
 			funcion = Funcion.UPDATE;
 		}
-		if(CONSULTAR_ID.equals(ejecucion))
+		if(CONSULTAR.equals(ejecucion))
 		{
-			int mensaje = JOptionPane.showConfirmDialog(null, "¿Desea consultar por ID?", "Consultar por ID?",  JOptionPane.YES_NO_OPTION);
+			int mensaje = JOptionPane.showConfirmDialog(null, "¿Desea consultar por todos los elementos?", "Consultar?",  JOptionPane.YES_NO_OPTION);
 			if(mensaje == JOptionPane.YES_OPTION)
+			{
+				funcion = Funcion.SELECT;
+			}
+			else
 			{
 				funcion = Funcion.SELECT_ID;
 			}
-			else
-			{
-				funcion = Funcion.SELECT;
-			}
 		}
-		if(CONSULTAR.equals(ejecucion))
-		{
-			int mensaje = JOptionPane.showConfirmDialog(null, "¿Desea consultar todos los elementos?", "Consultar",  JOptionPane.YES_NO_OPTION);
-			if(mensaje == JOptionPane.YES_OPTION)
-			{
-				funcion = Funcion.SELECT;
-			}
-			else
-			{
-				reiniciar();
-			}
-		}
+		
 		
 		if(INICIAR.equals(ejecucion)) 
 		{
@@ -268,6 +258,7 @@ public class PanelInformacionArtista extends JPanel implements ActionListener
 			{
 				if(funcion.equals(Funcion.SELECT))
 				{
+					
 					mensaje.funcionArtistas(funcion, 0, "", "");
 				}
 				else if(txtID.getText().equals(null))

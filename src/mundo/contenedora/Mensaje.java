@@ -5,8 +5,7 @@ import java.io.Serializable;
 public class Mensaje implements Serializable
 {
 	
-	private static final long serialVersionUID = 1567876524L;
-
+	
 	private Funcion funcion;
 	private Tabla tabla;
 	
