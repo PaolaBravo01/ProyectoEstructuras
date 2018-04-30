@@ -35,15 +35,8 @@ public class Contenedora<T>
 			{
 				for(int i = 1; i <= numeroColumnas; i++ )
 				{
-					String nombreColumna = metaDatos.getColumnName(i);
-					
-					if(nombreColumna.contains("_"))
-					{
-						int num = nombreColumna.indexOf('_');
-						nombreColumna = nombreColumna.substring(0, num);
-					}
-					
-					Method metodo = buscarMetodo(nombreColumna, metodos);
+										
+					Method metodo = buscarMetodo(metaDatos.getColumnName(i), metodos);
 					if(metodo != null)
 					{
 						darValor(dato, metodo, rs.getObject(i));

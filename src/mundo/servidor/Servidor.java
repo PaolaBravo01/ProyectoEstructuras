@@ -51,7 +51,8 @@ public class Servidor
 	}
 	public static void main(String[] args) throws IOException, ClassNotFoundException 
 	{
-		new Servidor().escuchar(); 
+		Servidor servidor =new Servidor(); 
+		servidor.escuchar();
 	}
 	
 

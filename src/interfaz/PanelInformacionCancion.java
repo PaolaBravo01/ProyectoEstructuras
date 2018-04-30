@@ -82,7 +82,7 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 		principal = ia;
 		
 		TitledBorder borde = BorderFactory.createTitledBorder("Información del artista");
-		borde.setTitleColor( Color.black );
+		borde.setTitleColor( Color.BLACK );
 		setBorder( borde );
 		
 		// Distribuidor grafico en los bordes
@@ -195,7 +195,12 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 		
 		if(INSERTAR.equals(ejecucion))
 		{
-			funcion = Funcion.INSERT;
+			int mensaje = JOptionPane.showConfirmDialog(null, "¿Desea agregar un registro?", "AGREGAR", JOptionPane.YES_NO_OPTION);
+			if(mensaje == JOptionPane.YES_OPTION)
+			{
+				JOptionPane.showMessageDialog(null, "Por favor ingrese los datos de la cancion que desea agregar");
+				funcion = Funcion.INSERT;
+			}		
 		}
 		if(ELIMINAR.equals(ejecucion))
 		{
@@ -211,7 +216,13 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 		
 		if(MODIFICAR.equals(ejecucion))
 		{
-			funcion = Funcion.UPDATE;
+			int mensaje = JOptionPane.showConfirmDialog(null, "¿Desea actualizar un registro?", "ACTUALIZAR", JOptionPane.YES_NO_OPTION);
+			if(mensaje == JOptionPane.YES_OPTION)
+			{
+				JOptionPane.showMessageDialog(null, "Por favor ingrese los datos de la canción que desea actualizar");
+
+				funcion = Funcion.UPDATE;
+			}
 		}
 		if(CONSULTAR.equals(ejecucion))
 		{
@@ -222,6 +233,8 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 			}
 			else
 			{
+				JOptionPane.showMessageDialog(null, "Por favor ingrese el ID de la canción que desea eliminar");
+
 				funcion = Funcion.SELECT_ID;
 			}
 		}
@@ -238,82 +251,59 @@ public class PanelInformacionCancion extends JPanel implements ActionListener {
 					
 					if(nodo != null)
 					{
-						String mensajeNodo = "";
+						String resultado = "";
 						
 						while(nodo != null)
 						{
-							mensajeNodo +=  nodo.getInformacion().toString() + "\n" ;
+							resultado +=  nodo.getInformacion().toString() + "\n" +"" ;
 							nodo = nodo.getSiguiente();
 						}
 						
-						txtResultados.setText(mensajeNodo);							
+						txtResultados.setText(resultado);							
 					}
 				}
 				else
 				{
 					usuario.envioMensaje(mensaje);
-					JOptionPane.showMessageDialog(null, "Se ha realizado la operación " + funcion.toString().toLowerCase() + " correctamente.");
+					JOptionPane.showMessageDialog(null, "Se ha realizado la operación correctamente.");
 				}
-				
-				reiniciar();
 				
 			} 
 			catch (Exception e) {
-				// TODO Auto-generated catch block
 				JOptionPane.showMessageDialog(null, "Se ha producido un error: "+ "\n" + e.getMessage());
 			}
 		}
 	}
 		
-		public Mensaje nuevoMensaje() throws Exception
+		public Mensaje nuevoMensaje() 
 		{
 			Mensaje mensaje = new Mensaje();
 			
-			if(tabla.equals(Tabla.CANCIONES))
+			if(funcion.equals(Funcion.SELECT))
 			{
-				if(funcion.equals(Funcion.SELECT))
-				{
-					
-					mensaje.funcionCanciones(funcion, 0, "", "", 0, "");
-				}
-				else if(txtID.getText().equals(null))
-				{
-					throw new Exception ("Debe ingresar un ID para ejecutar una función.");
-				}
-				else
-				{
-					int id = Integer.parseInt(txtID.getText());
-					String nombre = txtNombreCancion.getText();
-					String nombreArtista = txtNombreArtista.getText();
-					int duracion = Integer.parseInt(txtDuracion.getText());
-					String genero = txtGenero.getText();
 				
-					
-					mensaje.funcionCanciones(funcion, id, nombre, nombreArtista, duracion, genero);
-				}
-				
+				mensaje.funcionCanciones(funcion, 0, "", "", 0, "");
 			}
-			
+			else if(funcion.equals(Funcion.SELECT_ID)) 
+			{
+				int id = Integer.parseInt(txtID.getText());
+				mensaje.funcionCanciones(funcion, id, "", "", 0, "");
+
+			}
 			else
 			{
-				throw new Exception("No se puede ejecutar la operación.");
+				int id = Integer.parseInt(txtID.getText());
+				String nombre = txtNombreCancion.getText();
+				String nombreArtista = txtNombreArtista.getText();
+				int duracion = Integer.parseInt(txtDuracion.getText());
+				String genero = txtGenero.getText();
+				
+				mensaje.funcionCanciones(funcion, id, nombre, nombreArtista, duracion, genero);
 			}
 			
 			return mensaje;
 			
 		}
 		
-
-		public void reiniciar()
-		{
-			txtID.setText("");
-			txtNombreCancion.setText("");
-			txtNombreArtista.setText("");
-			txtDuracion.setText("");
-			txtGenero.setText("");
-		
-			funcion = null;
-			
-		}
 	
 }

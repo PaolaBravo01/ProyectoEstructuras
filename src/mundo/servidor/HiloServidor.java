@@ -43,7 +43,7 @@ public class HiloServidor extends Thread
 	
 	private void procesaInstrucciones() throws ClassNotFoundException, IOException
 	{
-		System.out.println("Esperando..."); //espera la conexion
+		System.out.println("Esperando..."); 
 
 		while(true)
 		{

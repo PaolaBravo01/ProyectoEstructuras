@@ -1,8 +1,11 @@
 package mundo.dto;
 
+import java.io.Serializable;
 
-public class CancionesDTO implements IDTO {
+public class CancionesDTO implements IDTO, Serializable {
 	
+	private static final long serialVersionUID = 5063886785530634323L;
+
 	private int idCancion;
 	
 	private String nombre;
@@ -72,23 +75,23 @@ public class CancionesDTO implements IDTO {
 
 	@Override
 	public String insertar() {
-		return "INSERT INTO CANCIONES (ID_CANCION, NOMBRE, NOMB_ARTISTA, DURACION, GENERO) VALUES ("+ idCancion+ ", '"+nombre.trim()+"', '"+nombreArtista.trim()+ "', "+ duracion+", '"+genero.trim()+"' )";
+		return "INSERT INTO CANCIONES (ID_CANCION, NOMBRE, NOM_ARTISTA, DURACION, GENERO) VALUES ("+ idCancion+ ", '"+nombre.trim()+"', '"+nombreArtista.trim()+ "', "+ duracion+", '"+genero.trim()+"' )";
 	}
 
 	@Override
 	public String eliminar() {
-		return  "delete from CANCIONES where ID_CANCION = "+idCancion;
+		return "DELETE FROM CANCIONES WHERE ID_CANCION = " +idCancion;
 	}
 
 	@Override
 	public String actualizar() {
-		return "UPDATE CANCIONES SET ID_CANCION = '"+idCancion+",NOMBRE = '"+nombre.trim()+",NOMB_ARTISTA = '"+nombreArtista.trim()+",DURACION = '"+duracion+",GENERO = '"+genero.trim()+"' WHERE ID_CANCION = "+idCancion;
-
+		return "UPDATE CANCIONES SET ID_CANCION = "+idCancion+", NOMBRE = '"+nombre.trim()+"', NOM_ARTISTA = '"+nombreArtista.trim()+"', DURACION = "+duracion+", GENERO = '"+genero.trim()+"' WHERE ID_CANCION = "+idCancion;
 	}
 
 	@Override
 	public String consultar() {
-		return "select * from canciones where ID_CANCION = "+idCancion;
+		return "Select ID_CANCION, NOMBRE, NOM_ARTISTA, DURACION, GENERO, FROM CANCIONES WHERE ID_CANCION = " +idCancion;
+		
 	}
 
 	@Override

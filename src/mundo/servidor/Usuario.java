@@ -14,6 +14,10 @@ public class Usuario
 
 	public final static int PUERTO = 8786;
 	
+	private String host = "localhost";
+	
+	private Socket cliente;
+	
 	public Usuario()
 	{
 		
@@ -22,16 +26,14 @@ public class Usuario
 	public Nodo envioMensaje(Mensaje messa) throws UnknownHostException, IOException, ClassNotFoundException 
 	{
 		
-		Socket servidor = new Socket("localhost", PUERTO);
+		cliente = new Socket(host, PUERTO);
 		System.out.println("Usuario Conectado!!");
 		
-		ObjectOutputStream oos = new ObjectOutputStream(servidor.getOutputStream());
-		
-		System.out.println("Se va a enviar una respuesta");
-		
+		ObjectOutputStream oos = new ObjectOutputStream(cliente.getOutputStream());
+	
 		oos.writeObject(messa);
 		
-		ObjectInputStream ois = new ObjectInputStream(servidor.getInputStream());
+		ObjectInputStream ois = new ObjectInputStream(cliente.getInputStream());
 		
 		Nodo nodo = (Nodo) ois.readObject();
 		
